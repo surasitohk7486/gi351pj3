@@ -7,6 +7,8 @@ public class QTE : MonoBehaviour
     // ประกาศตัวแปรสำหรับปุ่มที่สามารถสุ่มได้
     private KeyCode[] availableKeys = { KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.UpArrow, KeyCode.DownArrow};
 
+    [SerializeField] private GameObject[] bottonKey = new GameObject[4];
+
     // List สำหรับเก็บลำดับปุ่มที่สุ่มมา
     private List<KeyCode> randomKeys = new List<KeyCode>();
 
@@ -35,10 +37,16 @@ public class QTE : MonoBehaviour
             if (currentKeyIndex >= randomKeys.Count)
             {
                 Debug.Log("All keys pressed correctly!");
+                Destroy(bottonKey[0]);
+                Destroy(bottonKey[1]);
+                Destroy(bottonKey[2]);
+                Destroy(bottonKey[3]);
+                
                 // สุ่มปุ่มใหม่เมื่อกดถูกต้องครบทุกปุ่ม
                 GenerateRandomKeys();
                 Debug.Log("Press the keys in order: " + KeysToString(randomKeys));
                 currentKeyIndex = 0;
+                
             }
         }
         else
@@ -50,6 +58,7 @@ public class QTE : MonoBehaviour
                 {
                     Debug.Log("Wrong key pressed! Start over.");
                     currentKeyIndex = 0; // รีเซ็ตลำดับใหม่
+                    
                     Debug.Log("Press the keys in order: " + KeysToString(randomKeys));
                 }
             }
@@ -62,8 +71,23 @@ public class QTE : MonoBehaviour
         randomKeys.Clear();
         for (int i = 0; i < numberOfKeysToPress; i++)
         {
-            KeyCode randomKey = availableKeys[Random.Range(0, availableKeys.Length)];
+            int randomNum = Random.Range(0, availableKeys.Length);
+            KeyCode randomKey = availableKeys[randomNum];
             randomKeys.Add(randomKey);
+
+            switch(i)
+            {
+                case 0: bottonKey[randomNum].transform.position = new Vector2(-4, 0);
+                    break;
+                case 1: bottonKey[randomNum].transform.position = new Vector2(-1.5f, 0);
+                    break;
+                case 2: bottonKey[randomNum].transform.position = new Vector2(1.35f, 0);
+                    break;
+                case 3: bottonKey[randomNum].transform.position = new Vector2(4, 0);
+                    break;
+            }
+            Instantiate(bottonKey[randomNum]);
+
         }
     }
 
@@ -77,4 +101,5 @@ public class QTE : MonoBehaviour
         }
         return keyString.Trim();
     }
+
 }
