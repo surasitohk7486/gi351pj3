@@ -37,10 +37,7 @@ public class QTE : MonoBehaviour
             if (currentKeyIndex >= randomKeys.Count)
             {
                 Debug.Log("All keys pressed correctly!");
-                Destroy(bottonKey[0]);
-                Destroy(bottonKey[1]);
-                Destroy(bottonKey[2]);
-                Destroy(bottonKey[3]);
+                
                 
                 // สุ่มปุ่มใหม่เมื่อกดถูกต้องครบทุกปุ่ม
                 GenerateRandomKeys();
