@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76071afa94c2b2a41bca981d60574ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 3
   moveSpeed: 5
   climbSpeed: 3
   wallCheckPoint: {fileID: 1799725551}
@@ -334,6 +335,7 @@ MonoBehaviour:
   qteTimeLimit: 3
   parryPoints: 0
   maxParryPoints: 3
+  playerHP: {fileID: 0}
 --- !u!4 &414237051
 Transform:
   m_ObjectHideFlags: 0
@@ -382,6 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastDrop: 0
   qteManager: {fileID: 414237050}
+  playerHP: {fileID: 0}
 --- !u!212 &415338988
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -443,7 +446,7 @@ Transform:
   m_GameObject: {fileID: 415338986}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.37, y: -0.81, z: 0}
+  m_LocalPosition: {x: -2.68, y: -0.54, z: 0}
   m_LocalScale: {x: 1.2375, y: 0.65812504, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -750,8 +753,8 @@ Transform:
   m_GameObject: {fileID: 1180912229}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.06, y: -1.38, z: 0}
-  m_LocalScale: {x: 0.1575, y: 5.4875, z: 1}
+  m_LocalPosition: {x: -0.06, y: -1.3885, z: 0}
+  m_LocalScale: {x: 0.14050575, y: 5.4875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -849,7 +852,7 @@ Transform:
   m_GameObject: {fileID: 1650231455}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.85, y: -0.86, z: 0}
+  m_LocalPosition: {x: -4.26, y: -0.59, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -969,7 +972,7 @@ Transform:
   m_GameObject: {fileID: 1799725549}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6, y: -0.14, z: 0}
+  m_LocalPosition: {x: 4.69, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 2.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
