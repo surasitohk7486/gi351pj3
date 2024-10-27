@@ -8,6 +8,7 @@ public class ItemDrop : MonoBehaviour
     public DropType lastDrop = DropType.Health;
 
     [SerializeField] private QTEManager qteManager;
+    [SerializeField] private PlayerController playerHP;
 
     void Start()
     {
@@ -30,8 +31,12 @@ public class ItemDrop : MonoBehaviour
     {
         if (lastDrop == DropType.Health)
         {
+            if (playerHP.hp <= 3)
+            {
+                playerHP.hp += 1; // เพิ่มพลังชีวิตให้ผู้เล่น
+            }
             lastDrop = DropType.ParryPoint;
-            // เพิ่มพลังชีวิตให้ผู้เล่น
+            
             Debug.Log("Hp Player + 1");
         }
         else

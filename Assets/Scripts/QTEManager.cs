@@ -14,6 +14,8 @@ public class QTEManager : MonoBehaviour
     public int maxParryPoints = 3;
     private bool parryUsedInThisQTE = false;
 
+    [SerializeField] private PlayerController playerHP;
+
     void StartQTE(int numKeys)
     {
         keyQueue = new Queue<KeyCode>();
@@ -85,6 +87,16 @@ public class QTEManager : MonoBehaviour
     {
         isQTEActive = false;
         qteText.text = success ? "Success!" : "Failed!";
+        if (success)
+        {
+            Debug.Log("Success!");
+        }
+        else
+        {
+            Debug.Log("Failed!");
+            playerHP.hp -= 1;
+            Debug.Log($"Hp Player = {playerHP.hp}");
+        }
         // เพิ่มการลด HP หรือโจมตีศัตรูตรงนี้
     }
 

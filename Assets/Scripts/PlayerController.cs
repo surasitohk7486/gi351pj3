@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int hp = 3;
     public float moveSpeed = 5f;
     public float climbSpeed = 3f;
     public Transform wallCheckPoint;
