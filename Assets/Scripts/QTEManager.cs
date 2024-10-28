@@ -16,7 +16,7 @@ public class QTEManager : MonoBehaviour
 
     [SerializeField] private PlayerController playerHP;
 
-    void StartQTE(int numKeys)
+    public void StartQTE(int numKeys)
     {
         keyQueue = new Queue<KeyCode>();
         List<KeyCode> possibleKeys = new List<KeyCode> { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow };
