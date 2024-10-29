@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
 
         // กด W เพื่อปีนกำแพง
-        if (Input.GetKeyDown(KeyCode.W) && isOnWall)
+        if (Input.GetKey(KeyCode.W) && isOnWall)
         {
             rb.velocity = new Vector2(rb.velocity.x, climbSpeed);
         }
@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
     bool isNearWall()
     {
+        isOnWall = true;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(wallCheckPoint.position, wallCheckRadius, wallLayer);
         return colliders.Length > 0;
     }
