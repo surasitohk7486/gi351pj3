@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
@@ -45,6 +47,11 @@ public class PlayerController : MonoBehaviour
         if (isHiddenBehindWall && Input.GetKeyDown(KeyCode.W))
         {
             isHiddenBehindWall = false;
+        }
+
+        if(move != 0)
+        {
+            spriteRenderer.flipX = move < 0; 
         }
 
         animator.SetBool("IsPlayerRun", Mathf.Abs(move) > 0);

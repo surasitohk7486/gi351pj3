@@ -15,6 +15,17 @@ public class QTEManager : MonoBehaviour
     private bool parryUsedInThisQTE = false;
 
     [SerializeField] private PlayerController playerHP;
+    [SerializeField] private Animator animator; // ลาก Animator ของ GameObject ที่ต้องการใน Inspector
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>(); // เข้าถึง Animator ของ GameObject นี้
+ 
+        if (animator == null)
+        {
+            Debug.LogError("No Animator component found on this GameObject.");
+        }
+    }
 
     public void StartQTE(int numKeys)
     {
@@ -49,7 +60,7 @@ public class QTEManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space) && !parryUsedInThisQTE && parryPoints > 0)
                 {
                     UseParry();
-                    parryUsedInThisQTE = true; // ใช้ parry ครั้งเดียวต่อ QTE
+                    parryUsedInThisQTE = true;
                 }
                 else if (keyQueue.Count > 0 && keyQueue.Peek() == GetKeyCodePressed())
                 {
@@ -75,7 +86,6 @@ public class QTEManager : MonoBehaviour
     {
         parryPoints--;
         qteText.text = "Parry Used!";
-        // ระบบการ Parry เช่น ป้องกันการโจมตีหรือลดความเสียหายในครั้งนี้
     }
 
     void DisplayNextKey()
@@ -87,9 +97,11 @@ public class QTEManager : MonoBehaviour
     {
         isQTEActive = false;
         qteText.text = success ? "Success!" : "Failed!";
+
         if (success)
         {
             Debug.Log("Success!");
+            animator.SetTrigger("Attack"); // เรียกใช้ Trigger "Attack" เมื่อ QTE สำเร็จ
         }
         else
         {
@@ -97,7 +109,6 @@ public class QTEManager : MonoBehaviour
             playerHP.hp -= 1;
             Debug.Log($"Hp Player = {playerHP.hp}");
         }
-        // เพิ่มการลด HP หรือโจมตีศัตรูตรงนี้
     }
 
     KeyCode GetKeyCodePressed()
