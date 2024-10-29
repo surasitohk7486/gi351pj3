@@ -89,6 +89,7 @@ public class QTEManager : MonoBehaviour
                 }
                 else if (keyQueue.Count > 0)
                 {
+                    // เรียก EndQTE(false) เพื่อทำให้ตัวละครแสดงอนิเมชั่นเจ็บ
                     EndQTE(false);
                 }
             }
@@ -139,6 +140,9 @@ public class QTEManager : MonoBehaviour
             playerHP.hp -= 1;
             f[kill].isPlayerDetected = false;
             Debug.Log($"Hp Player = {playerHP.hp}");
+
+            // เรียกใช้ Trigger Hurt เมื่อกดปุ่มผิด
+            animator.SetTrigger("Hurt");
         }
     }
 

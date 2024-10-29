@@ -39,6 +39,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.W) && isOnWall)
         {
             rb.velocity = new Vector2(rb.velocity.x, climbSpeed);
+            animator.SetBool("IsClimbing", true); // ตั้งค่า IsClimbing เป็น true เมื่อปีน
+        }
+        else
+        {
+            animator.SetBool("IsClimbing", false); // ตั้งค่า IsClimbing เป็น false เมื่อไม่ปีน
         }
 
         // กด S เพื่อหลบหลังกำแพง
@@ -53,9 +58,9 @@ public class PlayerController : MonoBehaviour
             isHiddenBehindWall = false;
         }
 
-        if(move != 0)
+        if (move != 0)
         {
-            spriteRenderer.flipX = move < 0; 
+            spriteRenderer.flipX = move < 0;
         }
 
         animator.SetBool("IsPlayerRun", Mathf.Abs(move) > 0);
@@ -64,7 +69,6 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(sceneToLoad);
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

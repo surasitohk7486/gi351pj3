@@ -609,6 +609,7 @@ GameObject:
   - component: {fileID: 1242483637}
   - component: {fileID: 1242483636}
   - component: {fileID: 1242483635}
+  - component: {fileID: 1242483638}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -632,6 +633,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
+  isPlayerDetected: 0
   qteManager: {fileID: 1643627824}
 --- !u!212 &1242483636
 SpriteRenderer:
@@ -674,7 +676,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 513519384, guid: b49672b3facd33443a050c92c0e39b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -695,11 +697,32 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.04, y: -3.31, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1242483638
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242483634}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 58a827f2f43eb92489a99a36b83f45eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1345917299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,12 +1231,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde9a5e6e6d78c148b960705838f060c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qteText: {fileID: 0}
+  qteImage: {fileID: 0}
+  upArrowSprite: {fileID: 0}
+  downArrowSprite: {fileID: 0}
+  leftArrowSprite: {fileID: 0}
+  rightArrowSprite: {fileID: 0}
   qteTimeLimit: 3
   parryPoints: 0
   maxParryPoints: 3
   playerHP: {fileID: 1643627825}
   animator: {fileID: 1643627821}
+  f: []
 --- !u!114 &1643627825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1237,6 +1265,7 @@ MonoBehaviour:
   isHiddenBehindWall: 0
   animator: {fileID: 1643627821}
   spriteRenderer: {fileID: 1643627826}
+  sceneToLoad: 
 --- !u!212 &1643627826
 SpriteRenderer:
   m_ObjectHideFlags: 0
