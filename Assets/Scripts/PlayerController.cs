@@ -58,9 +58,29 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            isOnWall = true;
+            
+        }
+    }
+
+
+    void OnTriggerExit2D(Collider2D collision) 
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            isOnWall = false;
+
+        }
+        
+    }
+
     bool isNearWall()
     {
-        isOnWall = true;
+        
         Collider2D[] colliders = Physics2D.OverlapCircleAll(wallCheckPoint.position, wallCheckRadius, wallLayer);
         return colliders.Length > 0;
     }

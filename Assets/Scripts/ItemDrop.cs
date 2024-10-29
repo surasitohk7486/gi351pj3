@@ -7,12 +7,15 @@ public class ItemDrop : MonoBehaviour
     public enum DropType { Health, ParryPoint };
     public DropType lastDrop = DropType.Health;
 
+    bool playerInRange = false;
+
     [SerializeField] private QTEManager qteManager;
     [SerializeField] private PlayerController playerHP;
 
     void Start()
     {
         qteManager = FindObjectOfType<QTEManager>();
+        playerHP = FindObjectOfType<PlayerController>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -20,8 +23,23 @@ public class ItemDrop : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player Near");
+            playerInRange = true; // ตั้งค่าให้ทราบว่าผู้เล่นอยู่ในเขต
         }
-        if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player Left");
+            playerInRange = false; // เมื่อผู้เล่นออกจากเขต เปลี่ยนค่าเป็น false
+        }
+    }
+
+    void Update()
+    {
+        // ตรวจสอบว่าอยู่ในเขตและกดปุ่ม E
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             DropItem();
         }
@@ -29,12 +47,9 @@ public class ItemDrop : MonoBehaviour
 
     void DropItem()
     {
-        if (lastDrop == DropType.Health)
+        if (lastDrop == DropType.Health && playerHP.hp < 3)
         {
-            if (playerHP.hp <= 3)
-            {
-                playerHP.hp += 1; // เพิ่มพลังชีวิตให้ผู้เล่น
-            }
+            playerHP.hp += 1; // เพิ่มพลังชีวิตให้ผู้เล่น
             lastDrop = DropType.ParryPoint;
             
             Debug.Log("Hp Player + 1");
@@ -42,6 +57,7 @@ public class ItemDrop : MonoBehaviour
         else
         {
             lastDrop = DropType.Health;
+            Debug.Log($"Parry piont + 1");
             DropParryPoint();
         }
         Destroy(gameObject);

@@ -152,11 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc1b118a6850724ebbf1f0d398694ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 5
+  detectionRange: 2.5
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  qteManager: {fileID: 0}
+  qteManager: {fileID: 1640554872}
 --- !u!212 &178321603
 SpriteRenderer:
   m_ObjectHideFlags: 0

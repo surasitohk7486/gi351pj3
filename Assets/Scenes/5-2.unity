@@ -496,11 +496,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc1b118a6850724ebbf1f0d398694ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 5
+  detectionRange: 2.5
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  qteManager: {fileID: 0}
+  qteManager: {fileID: 1673346590}
 --- !u!212 &1402117248
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -728,11 +728,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc1b118a6850724ebbf1f0d398694ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 5
+  detectionRange: 2.5
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  qteManager: {fileID: 0}
+  qteManager: {fileID: 1673346590}
 --- !u!212 &1457750899
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1053,11 +1053,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc1b118a6850724ebbf1f0d398694ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 5
+  detectionRange: 2.5
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  qteManager: {fileID: 0}
+  qteManager: {fileID: 1673346590}
 --- !u!212 &1740612661
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1202,8 +1202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastDrop: 0
-  qteManager: {fileID: 0}
-  playerHP: {fileID: 0}
+  qteManager: {fileID: 1673346590}
+  playerHP: {fileID: 1673346591}
 --- !u!212 &1832993402
 SpriteRenderer:
   m_ObjectHideFlags: 0
