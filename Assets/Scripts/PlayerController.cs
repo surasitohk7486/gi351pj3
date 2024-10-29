@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -14,6 +15,9 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool isOnWall = false;
+
+    [SerializeField]
+    private Animator animator;
 
     void Start()
     {
@@ -42,6 +46,9 @@ public class PlayerController : MonoBehaviour
         {
             isHiddenBehindWall = false;
         }
+
+        animator.SetBool("IsPlayerRun", Mathf.Abs(move) > 0);
+
     }
 
     bool isNearWall()
