@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -20,6 +21,9 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+
+    [SerializeField]
+    private string sceneToLoad;
 
     void Start()
     {
@@ -55,6 +59,11 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetBool("IsPlayerRun", Mathf.Abs(move) > 0);
+
+        if (hp <= 0)
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
 
     }
 

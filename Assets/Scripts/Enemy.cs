@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public float detectionRange = 5f; // ระยะตรวจจับผู้เล่น
     public LayerMask playerLayer;
     private Transform player;
-    private bool isPlayerDetected = false;
+    public bool isPlayerDetected = false;
 
     // อ้างถึง QTEManager ที่ใช้ในโปรเจกต์นี้
     [SerializeField]  private QTEManager qteManager;
@@ -41,6 +41,8 @@ public class Enemy : MonoBehaviour
             qteManager.StartQTE(randomKeyCount);
         }
     }
+
+    
 
     // ใช้เพื่อแสดงระยะการตรวจจับของบอทใน Editor
     private void OnDrawGizmosSelected()

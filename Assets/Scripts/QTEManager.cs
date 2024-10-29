@@ -2,29 +2,40 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QTEManager : MonoBehaviour
 {
-    public TextMeshProUGUI qteText;
+    public Image qteImage; // Image สำหรับแสดงปุ่ม QTE
+
+    public Sprite upArrowSprite; // กำหนด Sprite สำหรับปุ่ม Up
+    public Sprite downArrowSprite; // กำหนด Sprite สำหรับปุ่ม Down
+    public Sprite leftArrowSprite; // กำหนด Sprite สำหรับปุ่ม Left
+    public Sprite rightArrowSprite; // กำหนด Sprite สำหรับปุ่ม Right
+
     public float qteTimeLimit = 3f;
     private Queue<KeyCode> keyQueue;
     private bool isQTEActive = false;
+    private int kill = 0;
     private float timer;
+
     public int parryPoints = 0;
     public int maxParryPoints = 3;
     private bool parryUsedInThisQTE = false;
 
     [SerializeField] private PlayerController playerHP;
     [SerializeField] private Animator animator; // ลาก Animator ของ GameObject ที่ต้องการใน Inspector
+    [SerializeField] private Enemy[] f;
 
     private void Start()
     {
         animator = GetComponent<Animator>(); // เข้าถึง Animator ของ GameObject นี้
- 
         if (animator == null)
         {
             Debug.LogError("No Animator component found on this GameObject.");
         }
+
+        qteImage.gameObject.SetActive(false); // ซ่อนภาพ QTE เมื่อเริ่มเกม
     }
 
     public void StartQTE(int numKeys)
@@ -40,8 +51,10 @@ public class QTEManager : MonoBehaviour
 
         DisplayNextKey();
         timer = qteTimeLimit;
+
         isQTEActive = true;
         parryUsedInThisQTE = false; // รีเซ็ตการใช้งาน parry เมื่อเริ่ม QTE
+        qteImage.gameObject.SetActive(true); // แสดงภาพ QTE
     }
 
     void Update()
@@ -85,28 +98,46 @@ public class QTEManager : MonoBehaviour
     void UseParry()
     {
         parryPoints--;
-        qteText.text = "Parry Used!";
+        qteImage.sprite = null; // ล้างรูปภาพเมื่อใช้ Parry
     }
 
     void DisplayNextKey()
     {
-        qteText.text = "Press: " + keyQueue.Peek().ToString();
+        KeyCode nextKey = keyQueue.Peek();
+        switch (nextKey)
+        {
+            case KeyCode.UpArrow:
+                qteImage.sprite = upArrowSprite;
+                break;
+            case KeyCode.DownArrow:
+                qteImage.sprite = downArrowSprite;
+                break;
+            case KeyCode.LeftArrow:
+                qteImage.sprite = leftArrowSprite;
+                break;
+            case KeyCode.RightArrow:
+                qteImage.sprite = rightArrowSprite;
+                break;
+        }
     }
 
     void EndQTE(bool success)
     {
         isQTEActive = false;
-        qteText.text = success ? "Success!" : "Failed!";
+        qteImage.gameObject.SetActive(false); // ซ่อนภาพ QTE เมื่อจบ QTE
 
         if (success)
         {
             Debug.Log("Success!");
             animator.SetTrigger("Attack"); // เรียกใช้ Trigger "Attack" เมื่อ QTE สำเร็จ
+            Destroy(f[kill].gameObject);
+            kill += 1;
         }
         else
         {
             Debug.Log("Failed!");
             playerHP.hp -= 1;
+            f[kill].isPlayerDetected = false;
             Debug.Log($"Hp Player = {playerHP.hp}");
         }
     }
