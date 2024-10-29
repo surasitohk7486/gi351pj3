@@ -8,10 +8,12 @@ public class SceneChanger : MonoBehaviour
     // กำหนดชื่อฉากที่ต้องการจะไป
     [SerializeField] private string sceneToLoad;
 
+    private bool isOn = false;
+
     void Update()
     {
-        // ตรวจสอบว่าผู้เล่นกดปุ่ม E หรือไม่
-        if (Input.GetKeyDown(KeyCode.E))
+        
+        if (Input.GetKeyDown(KeyCode.E) && isOn)
         {
             LoadNextScene();
         }
@@ -21,5 +23,15 @@ public class SceneChanger : MonoBehaviour
     private void LoadNextScene()
     {
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isOn = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isOn = false;
     }
 }
