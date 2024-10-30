@@ -12,11 +12,6 @@ public class ItemDrop : MonoBehaviour
     [SerializeField] private QTEManager qteManager;
     [SerializeField] private PlayerController playerHP;
 
-    [SerializeField]
-    private AudioSource collectAudioSource; // AudioSource สำหรับเสียงเก็บ
-    [SerializeField]
-    private AudioClip collectClip; // AudioClip สำหรับเสียงเก็บ
-
     void Start()
     {
         qteManager = FindObjectOfType<QTEManager>();
@@ -56,13 +51,12 @@ public class ItemDrop : MonoBehaviour
         {
             playerHP.hp += 1; // เพิ่มพลังชีวิตให้ผู้เล่น
             lastDrop = DropType.ParryPoint;
-            PlayCollectSound(); // เล่นเสียงเมื่อเก็บไอเทม
+            
             Debug.Log("Hp Player + 1");
         }
         else
         {
             lastDrop = DropType.Health;
-            PlayCollectSound(); // เล่นเสียงเมื่อเก็บไอเทม
             Debug.Log($"Parry piont + 1");
             DropParryPoint();
         }
@@ -86,13 +80,5 @@ public class ItemDrop : MonoBehaviour
     {
         GameObject parryItem = Instantiate(Resources.Load("ParryPointItem"), transform.position, Quaternion.identity) as GameObject;
         parryItem.GetComponent<ParryPointItem>().SetParryManager(qteManager);
-    }
-
-    void PlayCollectSound()
-    {
-        if (collectAudioSource != null && collectClip != null)
-        {
-            collectAudioSource.PlayOneShot(collectClip); // เล่นเสียงเก็บไอเทม
-        }
     }
 }
