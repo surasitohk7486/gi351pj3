@@ -130,6 +130,132 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: CyberTileA4_0
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 386
+        width: 42
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efb9ef3b18f29664c9e02f11ae614b4c
+      internalID: -766380399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CyberTileA4_1
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 312
+        width: 46
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ed1f274497332946a6b8ebfb29c50f7
+      internalID: 848456064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CyberTileA4_2
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 484
+        width: 45
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7614614de5d0f245980aec8f168cf3d
+      internalID: -792464852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CyberTileA4_3
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 547
+        width: 38
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1147661679998e24d9787caa4d69f9ca
+      internalID: 2017601031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CyberTileA4_4
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 264
+        width: 47
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3a47b5488ffb34479c29086ebd33ce7
+      internalID: 868682745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CyberTileA4_5
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 288
+        width: 194
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18947e7b752db334d8a3b345c966d67d
+      internalID: 208147087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -141,6 +267,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      CyberTileA4_0: -766380399
+      CyberTileA4_1: 848456064
+      CyberTileA4_2: -792464852
+      CyberTileA4_3: 2017601031
+      CyberTileA4_4: 868682745
+      CyberTileA4_5: 208147087
       Pipe: -273779258
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
