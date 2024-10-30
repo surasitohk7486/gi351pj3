@@ -27,6 +27,16 @@ public class QTEManager : MonoBehaviour
     [SerializeField] private Animator animator; // ลาก Animator ของ GameObject ที่ต้องการใน Inspector
     [SerializeField] private Enemy[] f;
 
+    [SerializeField]
+    private AudioSource attackAudioSource; // AudioSource สำหรับเสียงฟัน
+    [SerializeField]
+    private AudioClip attackClip; // AudioClip สำหรับเสียงฟัน
+
+    [SerializeField]
+    private AudioSource hurtAudioSource; // AudioSource สำหรับเสียงเมื่อโดนดาเมจ
+    [SerializeField]
+    private AudioClip hurtClip; // AudioClip สำหรับเสียงเมื่อโดนดาเมจ
+
     private void Start()
     {
         animator = GetComponent<Animator>(); // เข้าถึง Animator ของ GameObject นี้
@@ -131,6 +141,7 @@ public class QTEManager : MonoBehaviour
         {
             Debug.Log("Success!");
             animator.SetTrigger("Attack"); // เรียกใช้ Trigger "Attack" เมื่อ QTE สำเร็จ
+            attackAudioSource.PlayOneShot(attackClip); // เล่นเสียงฟัน
             Destroy(f[kill].gameObject);
             kill += 1;
         }
@@ -142,6 +153,7 @@ public class QTEManager : MonoBehaviour
             Debug.Log($"Hp Player = {playerHP.hp}");
 
             // เรียกใช้ Trigger Hurt เมื่อกดปุ่มผิด
+            hurtAudioSource.PlayOneShot(hurtClip); // เล่นเสียงดาเมจ
             animator.SetTrigger("Hurt");
         }
     }

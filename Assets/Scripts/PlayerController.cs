@@ -25,9 +25,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private string sceneToLoad;
 
+    [SerializeField]
+    private UIManager uiManager; // ให้ลาก UIManager ที่สร้างขึ้นใน Inspector
+
+    [SerializeField]
+    private AudioSource footstepAudioSource; // ตัวแปร AudioSource สำหรับเสียงก้าว
+    [SerializeField]
+    private AudioClip footstepClip; // ตัวแปร AudioClip สำหรับเสียงก้าว
+
+    [SerializeField]
+    private AudioSource climbAudioSource; // AudioSource สำหรับเสียงปีนกำแพง
+    [SerializeField]
+    private AudioClip climbClip; // AudioClip สำหรับเสียงปีนกำแพง
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
     }
 
     void Update()
@@ -35,11 +49,22 @@ public class PlayerController : MonoBehaviour
         float move = Input.GetAxis("Horizontal"); // ควบคุมการเดินด้วย A, D หรือปุ่มลูกศร
         rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
 
+        // เล่นเสียงก้าวเมื่อเดิน
+        if (Mathf.Abs(move) > 0 && !footstepAudioSource.isPlaying)
+        {
+            footstepAudioSource.PlayOneShot(footstepClip); // เล่นเสียงก้าว
+        }
+
         // กด W เพื่อปีนกำแพง
         if (Input.GetKey(KeyCode.W) && isOnWall)
         {
             rb.velocity = new Vector2(rb.velocity.x, climbSpeed);
             animator.SetBool("IsClimbing", true); // ตั้งค่า IsClimbing เป็น true เมื่อปีน
+            if (!climbAudioSource.isPlaying)
+            {
+                climbAudioSource.clip = climbClip;
+                climbAudioSource.Play();
+            }
         }
         else
         {
@@ -90,6 +115,7 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
 
     bool isNearWall()
     {
